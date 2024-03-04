@@ -8,6 +8,7 @@ from algorithms.a_star import a_star
 from problems.puzzle_4 import Puzzle4
 from problems.puzzle_8 import Puzzle8
 from problems.maze import Maze
+from problems.trail import Trail
 
 
 def test_problem(problem, algorithm):
@@ -49,4 +50,13 @@ if __name__ == "__main__":
     test_problem(problem, breadth_search)
 
     print("\n\n>> Puzzle 8 with Heuristic (with distance manhattan) <<\n")
+    test_problem(problem, a_star)
+
+
+    problem = Trail()
+
+    print("\n\n>> Trail with Dijkstra <<\n")
+    test_problem(problem, dijkstra)
+
+    print("\n\n>> Trail with Heuristic (with distance manhattan) <<\n")
     test_problem(problem, a_star)

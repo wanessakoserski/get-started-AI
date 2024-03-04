@@ -1,17 +1,17 @@
-from basic.storage import Stack
 from basic.visited_nodes import VisitedNodes
+from basic.storage import PriorityQueue
 
-def depth_search(problem):
+def dijkstra(problem):
     node = problem.start()
 
-    stack = Stack()
-    stack.push(node)
+    queue = PriorityQueue()
+    queue.push(0, node)
 
     visited = VisitedNodes()
     # visited.add(node)
 
-    while not stack.is_empty():
-        node = stack.pop()
+    while not queue.is_empty():
+        node = queue.pop()
         visited.add(node)
 
         if (problem.test_goal(node)):
@@ -21,6 +21,8 @@ def depth_search(problem):
 
         for next_node in next_nodes:
             if not visited.was_visited(next_node):
-                stack.push(next_node)
+                next_node.cost = node.cost + problem.cost(node, next_node)
+                dijkstra = next_node.cost
+                queue.push(dijkstra, next_node)
 
     return (visited.length(), None)

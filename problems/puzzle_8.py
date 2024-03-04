@@ -20,7 +20,6 @@ class Puzzle8:
             if (i % 3 == 0):
                 final_state += "\n"
             final_state += " | " + state[i] 
-        final_state += " | "
 
         return final_state
     
@@ -87,7 +86,7 @@ class Puzzle8:
 
     # Heuristic 2: distance to expected result
     # admissible heuristic, as the result always comes closer
-    def heutistic(self, node):
+    def heuristic(self, node):
         state = node.state
         result = [["1", "2", "3"], ["4", "5", "6"], ["7", "8", "_"]]
         matrix_state = [state[0:3], state[3:6], state[6:9]]
